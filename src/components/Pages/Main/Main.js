@@ -5,43 +5,42 @@ import './Main.css';
 
 class Main extends React.Component {
 
-    /*
-    //fake data
-    state = {
-        jobcards: dataobjects
-    }
-    */
-
-    
-    //real data
-
     state = {
         jobcards: []
     }
 
-    componentDidMount() {
+    getData(page=1) {   
         let keyword;
         if (JSON.stringify(this.props.location.state.keywords) === "[\"python\"]") {
             keyword = this.props.location.state.keywords;
         } else {
             keyword = this.props.location.state.keywords.split(",");
         }
+        let ids = [];
+        let datalist = [];
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
         keyword.forEach( (element) => {
             const url = `https://jobs.github.com/positions.json?description=${element}&page=1`
- 
             fetch(proxyurl + url)
             .then(response => response.json())
             .then(
                 (data) => {
-                    this.setState(
-                        { jobcards: data }
-                    )
+                    data.forEach( (e) => {
+                        if (!(e.id in ids)) {
+                            ids.push(e.id)
+                            datalist.push(e)
+                            this.setState({
+                                jobcards: this.state.jobcards.concat([e])
+                            })
+                        }
+                    })
                 })
         })
-        
     }
     
+    componentDidMount() {
+        this.getData()
+    }
 
     render() {
         if (!this.state.jobcards.length) {
