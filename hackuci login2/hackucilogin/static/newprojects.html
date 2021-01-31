@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+    
+      <title></title>
+      
+      <!-- Link stylesheets here! -->
+      <!-- The order of the link tags is the order in which styles are applied -->
+      <!-- If you want to override Bootstrap styling, link your own stylesheet AFTER bootstrap -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+      <link href="style.css" rel="stylesheet" type="text/css" />
+    
+      <!-- Import Google Fonts (https://fonts.google.com/) -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    
+    </head>
+
+    <body>
+        <h2 class ="header">Create a project</h2>
+        <div class = "newprojectboard">
+        </div>
+        <form id="add-log-form" method="POST" action="/addprojects" id="textarea">
+            <div class ="projname">
+            <label for="firstname"></label>
+        <input type = "text" class="form-control" name="projectname" required placeholder="Project Name"/>
+    </div>
+    <div class ="projname1">
+        <label for="firstname"></label>
+    <input type = "text" class="form-control" name="roles" required placeholder="Roles"/>
+</div>
+<div class ="projname2">
+    <label for="firstname"></label>
+<input type = "text" class="form-control" name="tags" required placeholder="Tags"/>
+</div>
+            <!--add a section that checks if the email is already in the database so that you don't have repeat emails-->
+            <br/>
+            <label for="projectoverview"></label>
+            <textarea id="textarea1" name="projectoverview" rows="4" cols="50" placeholder="Project Overview"></textarea>
+            <br>
+            <!-- Form buttons -->
+            <div class ="projname3">
+                <label for="firstname"></label>
+            <input type = "text" class="form-control" name="collaborators" required placeholder="Collaborators"/>
+        </div>
+        <div class="button">
+              <label for="submitbutton"></label>
+              <input class="form-control btn-success" type="submit" value = "Start Project"/> 
+            </div>
+          </form>
+        <!--
+            <div class = "projectboard2">
+        </div>
+        <div class = "projectboard3">
+        </div> -->
+    </body>
+</html>
