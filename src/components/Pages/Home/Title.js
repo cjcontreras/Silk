@@ -1,7 +1,7 @@
 import React from 'react';
-import './Header.css';
+import './Title.css';
 
-class Header extends React.Component {
+class Title extends React.Component {
     render() {
         return(
             <div>
@@ -12,4 +12,4 @@ class Header extends React.Component {
     }
 }
 
-export default Header;
+export default Title;

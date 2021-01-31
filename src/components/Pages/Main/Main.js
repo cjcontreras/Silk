@@ -1,19 +1,35 @@
 import React from 'react';
 import JobCard from './JobCard';
+import dataobjects from './dummyData';
+import './Main.css';
 
 class Main extends React.Component {
+
+    /*
+    //fake data
+    state = {
+        jobcards: dataobjects
+    }
+    */
+
     
+    //real data
+
     state = {
         jobcards: []
     }
 
     componentDidMount() {
-        let keyword = this.props.location.state.keywords.split(",");
-        console.log(keyword)
+        let keyword;
+        if (JSON.stringify(this.props.location.state.keywords) === "[\"python\"]") {
+            keyword = this.props.location.state.keywords;
+        } else {
+            keyword = this.props.location.state.keywords.split(",");
+        }
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
         keyword.forEach( (element) => {
             const url = `https://jobs.github.com/positions.json?description=${element}&page=1`
-
+ 
             fetch(proxyurl + url)
             .then(response => response.json())
             .then(
@@ -23,19 +39,29 @@ class Main extends React.Component {
                     )
                 })
         })
+        
     }
+    
 
     render() {
         if (!this.state.jobcards.length) {
-            return <div>hi</div>;
+            return (
+                <div className="loading-logo">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+            )
         }
 
         let jobcards = this.state.jobcards.map( (jobObject) => (
-            <JobCard jobData={jobObject}/>
+            <div className="col-lg-4 main-card">
+                <JobCard jobData={jobObject}/>
+            </div>
         ))
 
         return (
-            <div>
+            <div className="row">
                 {jobcards}
             </div>
         )

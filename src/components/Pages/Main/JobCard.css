@@ -1,0 +1,42 @@
+.box1{
+    width: 80%;
+    height: 350px;
+    border: 1px solid white;
+    padding: 30px;
+}
+
+
+div.box1{
+    border-radius: 10px;
+    border: 0.1px solid rgba(0, 0, 0, 0.1);
+    margin: auto;
+}
+
+div.box1:hover{
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.1);
+}
+
+.job-card-box {
+    padding: 1em;
+}
+
+.learn-more-btn {
+    margin-top: 50px;
+    text-align: right;
+}
+
+.learn-more-btn a {
+    color: rgb(26, 151, 232);
+    border: 0.1px solid rgb(26, 151, 232);
+    padding: 8px 6px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+}
+
+.learn-more-btn a:hover {
+    color: white;
+    background-color: rgb(26, 151, 232);
+}

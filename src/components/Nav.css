@@ -1,0 +1,9 @@
+.nav-container {
+    display: flex;
+    margin-right: 30px;
+}
+
+.nav-element {
+    margin: 10px 20px 0px 10px;
+}
+

@@ -1,0 +1,12 @@
+.silk-img {
+    height: 20px;
+    width: 20px;
+    left: 10px;
+    top: 10px;
+    position: relative;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+}

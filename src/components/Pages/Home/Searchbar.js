@@ -3,25 +3,22 @@ import './Searchbar.css';
 import Tagify from '@yaireo/tagify';
 import '@yaireo/tagify/dist/tagify.css';
 import { Link } from 'react-router-dom';
-import Main from './../Main/Main';
 
 
 class Searchbar extends React.Component {
 
-    state = { keywords: [] }
+    state = { keywords: "python" }
 
     // input tags https://github.com/yairEO/tagify#ajax-whitelist
     inputTag() {
         let input = document.querySelector('input[type=text]')
         let tagify = new Tagify(input, {
             originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(','),
-            whitelist: ["hello", "test", "123"],
-            blacklist: ["no", "yes", "maybe"]
+            whitelist: ["Python", "Java", "C++", "SQL", "Javascript", "Web Development", "MongoDB", "CSS", "HTML"],
         })
 
         input.addEventListener('change', (e) => {
             console.log(e.target.value);
-            console.log(e.target.value[0]);
             this.setState({ keywords: e.target.value });
         })
     }

@@ -1,0 +1,17 @@
+.company-img {
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    margin: auto;
+    object-fit: scale-down;
+}
+
+.job-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 27px;
+}
+
+.job-company {
+    margin: 10px 0;
+}
