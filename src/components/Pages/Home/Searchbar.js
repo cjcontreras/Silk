@@ -1,24 +1,33 @@
 import React from 'react';
-import './styling/Searchbar.css';
+import './Searchbar.css';
 import Tagify from '@yaireo/tagify';
 import '@yaireo/tagify/dist/tagify.css';
+import { Link } from 'react-router-dom';
+import Main from './../Main/Main';
 
-//<input class="searchinput" type="text" placeholder="Search.." name="search"/>
 
 class Searchbar extends React.Component {
 
+    state = { keywords: [] }
+
+    // input tags https://github.com/yairEO/tagify#ajax-whitelist
     inputTag() {
         let input = document.querySelector('input[type=text]')
         let tagify = new Tagify(input, {
-            whitelist: ["hello, test, 123"],
+            originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(','),
+            whitelist: ["hello", "test", "123"],
             blacklist: ["no", "yes", "maybe"]
         })
-        input.style.setProperty('--tag--min-width', '100px');
+
+        input.addEventListener('change', (e) => {
+            console.log(e.target.value);
+            console.log(e.target.value[0]);
+            this.setState({ keywords: e.target.value });
+        })
     }
     
     componentDidMount() {
         this.inputTag();
-        //document.getElementsByClassName('tagify').style.setProperty('--tag--max-width', '80px');
     }
 
     render() {
@@ -27,8 +36,12 @@ class Searchbar extends React.Component {
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                 </svg>
-                <form className="form-search" action="/action_page.php">
+                <form className="form-search">
                     <input type="text" className="input-search"></input>
+                    <Link to={{
+                        pathname: "/Main",
+                        state: { keywords: this.state.keywords }
+                    }}>
                         <button className="submit-btn" type="submit">
                             <div className="svg-container">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-right" viewBox="0 0 16 16">
@@ -36,6 +49,7 @@ class Searchbar extends React.Component {
                                 </svg>
                             </div> 
                         </button>
+                    </Link>
                 </form>
             </div>
         )
